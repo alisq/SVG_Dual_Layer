@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Barrio 5 by Meat Studio – Dual Layer</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      font-family: sans-serif;
+      background: white;
+      color: black;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: #111;
+      color: white;
+    }
+    body {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    label, button {
+      display: block;
+      margin: 8px 0;
+    }
+    .layer-controls {
+      margin-top: 20px;
+      padding: 10px 0;
+      /* no border */
+    }
+    .layer-controls h3 {
+      margin: 0 0 10px;
+    }
+    .flex-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    input[type="color"] {
+      padding: 0;
+      border: none;
+      background: none;
+    }
+
+    /* Responsive preview container */
+    #preview {
+      margin-top: 20px;
+      /* The preview uses viewport units to size responsively */
+      width: 75vw;
+      height: 75vh;
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      /* no border */
+      flex-shrink: 0;
+    }
+
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto;
+      width: auto;
+      display: block;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <h2>Barrio 5 by Meat Studio – Dual Layer Stroke Tuner</h2>
+
+  <button id="invert">INVERT</button>
+  <button id="randomizeBoth">RANDOMIZE BOTH LAYERS</button>
+  <button id="download">DOWNLOAD COMBINED SVG</button>
+
+  <!-- Top Layer Controls FIRST -->
+  <div class="layer-controls" id="layer2-controls">
+    <h3>Top Layer</h3>
+    <button class="randomize-layer" data-layer="2">🎲 Randomize Top Layer</button>
+    <label>Stroke Width:
+      <input type="range" min="0.5" max="40" step="0.5" value="26.6" id="w2" />
+    </label>
+    <label>Stroke Cap:
+      <select id="cap2">
+        <option value="butt">Butt</option>
+        <option value="round">Round</option>
+        <option value="square">Square</option>
+      </select>
+    </label>
+    <label>Stroke Join:
+      <select id="join2">
+        <option value="miter">Miter</option>
+        <option value="round">Round</option>
+        <option value="bevel">Bevel</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="dash2" /> Dashed Line</label>
+    <div id="dashControls2" style="display:none;">
+      <label>Dash Length: <input type="number" value="10" min="1" id="dashLength2" /></label>
+      <label>Gap Length: <input type="number" value="5" min="0" id="gapLength2" /></label>
+    </div>
+    <div class="flex-row">
+      <label>Stroke Color (HEX):</label>
+      <input type="text" value="#000000" id="color2" />
+      <input type="color" id="colorPicker2" value="#000000" />
+    </div>
+  </div>
+
+  <!-- Bottom Layer Controls SECOND -->
+  <div class="layer-controls" id="layer1-controls">
+    <h3>Bottom Layer</h3>
+    <button class="randomize-layer" data-layer="1">🎲 Randomize Bottom Layer</button>
+    <label>Stroke Width:
+      <input type="range" min="0.5" max="40" step="0.5" value="26.6" id="w1" />
+    </label>
+    <label>Stroke Cap:
+      <select id="cap1">
+        <option value="butt">Butt</option>
+        <option value="round">Round</option>
+        <option value="square">Square</option>
+      </select>
+    </label>
+    <label>Stroke Join:
+      <select id="join1">
+        <option value="miter">Miter</option>
+        <option value="round">Round</option>
+        <option value="bevel">Bevel</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="dash1" /> Dashed Line</label>
+    <div id="dashControls1" style="display:none;">
+      <label>Dash Length: <input type="number" value="10" min="1" id="dashLength1" /></label>
+      <label>Gap Length: <input type="number" value="5" min="0" id="gapLength1" /></label>
+    </div>
+    <div class="flex-row">
+      <label>Stroke Color (HEX):</label>
+      <input type="text" value="#ffffff" id="color1" />
+      <input type="color" id="colorPicker1" value="#ffffff" />
+    </div>
+  </div>
+
+  <div id="preview">
+    <svg
+      id="logo"
+      viewBox="0 0 612 792"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g id="layer1"><!-- Bottom Layer -->
+        <path
+          id="path1"
+          d="M504.46,225.71l36.36,20.35 M483.39,253.09l19.59-24.57 M376.25,233.95l-24.91,4.52 M211.08,269.83l-5.84-14.6
+          c-13.95,1.62-34.72,32.45-21.09,45.43c16.47,15.69,40.56-37,44.13-51.92 M221.78,263.34c0,0-15.25,34.72,0,31.8
+          c14.4-2.76,26.29-27.26,32.67-40.63 M280.57,268.61c0.64-6.4-6.69-9.57-23.31-6.48 M280.57,268.61c-5.6,5.6-24.34,28.03-10.45,27.12
+          c13.11-0.86,28.26-22.65,34.42-36.28 M332.28,271.6c-29.74,23.24-28.17,35.35-17.92,34.95c16.08-0.62,48.06-40.8,48.06-40.8
+          M331.69,273.18c-0.79-14.57-26.14-9.95-26.14-9.95 M380.41,292.46c-8.26,4.88-19.9,23.93-8.29,32.89
+          c23.61,18.23,64.24-32.27,49.8-51.59c-13.51-18.07-38.16-8.58-50.68,23.53 M72.18,286.08c0,0,145.4-39.93,113.7-78.19
+          c-9.38-11.33-32.8-1.64-47.56,14.76 M42.54,363.59l99.06-154.61 M89.87,314.97c74.69,5.53,93.83-17.98,87.27-33.28
+          c-4.38-10.22-35.53-12.57-62.86-3.83 M349.46,282.24c-19.9,29.02,10.91,40.39,50.4-0.96 M515.63,364.31l17.1-17.06
+          c-11.15-34.53-66.3-27.15-70.29-15.75c-4.98,14.23,8.44,22.08,27.07,19.32c70.88-10.49,75.08-100.78-8.94-90.3"
+          stroke="#000000"
+          fill="none"
+          stroke-width="26.6"
+        />
+      </g>
+      <g id="layer2"><!-- Top Layer -->
+        <path
+          id="path2"
+          d="M504.46,225.71l36.36,20.35 M483.39,253.09l19.59-24.57 M376.25,233.95l-24.91,4.52 M211.08,269.83l-5.84-14.6
+          c-13.95,1.62-34.72,32.45-21.09,45.43c16.47,15.69,40.56-37,44.13-51.92 M221.78,263.34c0,0-15.25,34.72,0,31.8
+          c14.4-2.76,26.29-27.26,32.67-40.63 M280.57,268.61c0.64-6.4-6.69-9.57-23.31-6.48 M280.57,268.61c-5.6,5.6-24.34,28.03-10.45,27.12
+          c13.11-0.86,28.26-22.65,34.42-36.28 M332.28,271.6c-29.74,23.24-28.17,35.35-17.92,34.95c16.08-0.62,48.06-40.8,48.06-40.8
+          M331.69,273.18c-0.79-14.57-26.14-9.95-26.14-9.95 M380.41,292.46c-8.26,4.88-19.9,23.93-8.29,32.89
+          c23.61,18.23,64.24-32.27,49.8-51.59c-13.51-18.07-38.16-8.58-50.68,23.53 M72.18,286.08c0,0,145.4-39.93,113.7-78.19
+          c-9.38-11.33-32.8-1.64-47.56,14.76 M42.54,363.59l99.06-154.61 M89.87,314.97c74.69,5.53,93.83-17.98,87.27-33.28
+          c-4.38-10.22-35.53-12.57-62.86-3.83 M349.46,282.24c-19.9,29.02,10.91,40.39,50.4-0.96 M515.63,364.31l17.1-17.06
+          c-11.15-34.53-66.3-27.15-70.29-15.75c-4.98,14.23,8.44,22.08,27.07,19.32c70.88-10.49,75.08-100.78-8.94-90.3"
+          stroke="#ffffff"
+          fill="none"
+          stroke-width="26.6"
+        />
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    const caps = ["butt", "round", "square"];
+    const joins = ["miter", "round", "bevel"];
+
+    function randomHexColor() {
+      const hex = Math.floor(Math.random() * 0xffffff)
+        .toString(16)
+        .padStart(6, "0");
+      return `#${hex}`;
+    }
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const applyLayerSettings = (prefix, layerId) => {
+      const path = document.querySelector(`#${layerId} path`);
+      const strokeWidth = document.getElementById(`w${prefix}`).value;
+      const cap = document.getElementById(`cap${prefix}`).value;
+      const join = document.getElementById(`join${prefix}`).value;
+      const dash = document.getElementById(`dash${prefix}`).checked;
+      const dashL = document.getElementById(`dashLength${prefix}`).value;
+      const gapL = document.getElementById(`gapLength${prefix}`).value;
+      const color = document.getElementById(`color${prefix}`).value;
+
+      path.setAttribute("stroke-width", strokeWidth);
+      path.setAttribute("stroke-linecap", cap);
+      path.setAttribute("stroke-linejoin", join);
+      path.setAttribute("stroke", color);
+
+      if (dash) {
+        path.setAttribute("stroke-dasharray", `${dashL},${gapL}`);
+      } else {
+        path.removeAttribute("stroke-dasharray");
+      }
+    };
+
+    const addLayerListeners = (prefix, layerId) => {
+      document
+        .querySelectorAll(`#layer${prefix}-controls input, #layer${prefix}-controls select`)
+        .forEach((el) => el.addEventListener("input", () => applyLayerSettings(prefix, layerId)));
+
+      document.getElementById(`dash${prefix}`).addEventListener("change", () => {
+        document.getElementById(`dashControls${prefix}`).style.display =
+          document.getElementById(`dash${prefix}`).checked ? "block" : "none";
+        applyLayerSettings(prefix, layerId);
+      });
+
+      // Color sync between text and picker
+      document.getElementById(`colorPicker${prefix}`).addEventListener("input", (e) => {
+        document.getElementById(`color${prefix}`).value = e.target.value;
+        applyLayerSettings(prefix, layerId);
+      });
+
+      document.getElementById(`color${prefix}`).addEventListener("input", (e) => {
+        document.getElementById(`colorPicker${prefix}`).value = e.target.value;
+        applyLayerSettings(prefix, layerId);
+      });
+    };
+
+    // Randomize one layer's controls and apply
+    function randomizeLayer(prefix, layerId) {
+      document.getElementById(`w${prefix}`).value = (Math.random() * (40 - 0.5) + 0.5).toFixed(1);
+      document.getElementById(`cap${prefix}`).value = caps[randomInt(0, caps.length - 1)];
+      document.getElementById(`join${prefix}`).value = joins[randomInt(0, joins.length - 1)];
+      const dashOn = Math.random() < 0.5;
+      document.getElementById(`dash${prefix}`).checked = dashOn;
+      document.getElementById(`dashControls${prefix}`).style.display = dashOn ? "block" : "none";
+      document.getElementById(`dashLength${prefix}`).value = randomInt(1, 30);
+      document.getElementById(`gapLength${prefix}`).value = randomInt(0, 30);
+      const randomColor = randomHexColor();
+      document.getElementById(`color${prefix}`).value = randomColor;
+      document.getElementById(`colorPicker${prefix}`).value = randomColor;
+
+      applyLayerSettings(prefix, layerId);
+    }
+
+    addLayerListeners(1, "layer1");
+    addLayerListeners(2, "layer2");
+
+    // Add randomize buttons listeners
+    document.querySelectorAll(".randomize-layer").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const layer = btn.getAttribute("data-layer");
+        randomizeLayer(layer, `layer${layer}`);
+      });
+    });
+
+    // General randomize both layers
+    document.getElementById("randomizeBoth").addEventListener("click", () => {
+      randomizeLayer(1, "layer1");
+      randomizeLayer(2, "layer2");
+    });
+
+    document.getElementById("invert").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    document.getElementById("download").addEventListener("click", () => {
+      const svg = document.getElementById("logo").outerHTML;
+      const blob = new Blob([svg], { type: "image/svg+xml" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "barrio5-layers.svg";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Initialize
+    applyLayerSettings(1, "layer1");
+    applyLayerSettings(2, "layer2");
+  </script>
+</body>
+</html>
