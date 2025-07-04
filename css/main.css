@@ -1,0 +1,67 @@
+html, body {
+      margin: 0; padding: 0; height: 100%;
+      font-family: sans-serif;
+      background: white;
+      color: black;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: #111;
+      color: white;
+    }
+    body {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    label, button {
+      display: block;
+      margin: 8px 0;
+    }
+    .layer-controls {
+      margin-top: 20px;
+      padding: 10px 0;
+      /* no border */
+    }
+    .layer-controls h3 {
+      margin: 0 0 10px;
+    }
+    .flex-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    input[type="color"] {
+      padding: 0;
+      border: none;
+      background: none;
+    }
+
+    /* Responsive preview container */
+    #preview {
+      margin-top: 20px;
+      /* The preview uses viewport units to size responsively */
+      width: 75vw;
+      height: 75vh;
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      /* no border */
+      flex-shrink: 0;
+    }
+
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto;
+      width: auto;
+      display: block;
+      background: transparent;
+    }
